@@ -1,0 +1,81 @@
+Pessoa 3FN
+	CPF -> nome
+	CPF -> sexo 
+	CPF -> data_nascimento
+	CPF -> us_id
+
+Professor 3FN
+	NUSP -> pe_CPF
+	NUSP -> instituto
+	NUSP -> departamento
+
+Administrador
+	NUSP -> pe_CPF
+	NUSP -> cargo
+
+Curriculo
+	codigo -> ad_NUSP
+	codigo -> NOME
+	codigo -> instituto
+	codigo -> descricao
+
+Aluno
+	NUSP -> pe_CPF
+	NUSP -> cu_codigo
+
+Disciplina
+	codigo -> nome
+	codigo -> departamento
+	codigo -> descricao
+	codigo -> creditos
+
+Ministra
+	nenhuma
+
+Planeja
+	nenhuma
+
+Oferecimento
+	ID -> pr_NUSP
+	ID -> di_codigo
+	ID -> semestre
+
+Cursa
+	al_NUSP, of_id -> nota
+
+Trilha
+	codigo -> nome
+	codigo -> descricao
+	codigo -> cu_codigo
+
+Modulo
+	codigo -> nome
+	codigo -> descricao
+	codigo -> tr_codigo
+
+rel_dis_mod
+	di_codigo, mo_codigo -> obrigatoria
+
+Perfil
+	id -> nome
+	id -> descricao
+
+Servico
+	id -> nome
+	id -> descricao
+
+us_pf
+	nenhuma
+
+pf_se
+	nenhuma
+
+
+
+
+
+
+
+
+
+
