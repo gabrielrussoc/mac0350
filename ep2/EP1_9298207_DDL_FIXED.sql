@@ -316,7 +316,8 @@ CREATE TABLE Perfil (
   id SERIAL,
   nome varchar(64) not NULL,
   descricao text,
-  CONSTRAINT pk_perfil PRIMARY KEY (id)
+  CONSTRAINT pk_perfil PRIMARY KEY (id),
+  CONSTRAINT sk_perfil UNIQUE (nome)
 );
 
 CREATE TABLE Servico (

@@ -239,50 +239,49 @@ VALUES
 INSERT INTO Perfil
     (nome, descricao)
 VALUES
-    ('root', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('main', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('admin', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('basic', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('limited', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!');
+    ('visitante', 'Usuario cadastrado'),
+    ('aluno', 'Aluno'),
+    ('administrador', 'Administrador'),
+    ('professor', 'Professor');
 
 INSERT INTO Servico
     (nome, descricao)
 VALUES
-    ('add_user', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('add_discipline', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('edit_user', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('edit_discipline', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('check_track_status', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('add_student', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('add_module', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('remove_discipline', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('edit_module', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!'),
-    ('add_planned offering', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!');
+    ('insere_aluno', 'Cadastro de aluno na base de dados'),
+    ('insere_curriculo', 'Cadastro de curriculo na base de dados'),
+    ('insere_disciplina', 'Cadastro de disciplina na base de dados'),
+    ('insere_trilha', 'Cadastro de trilha na base de dados'),
+    ('insere_modulo', 'Cadastro de modulo na base de dados'),
+    ('insere_ministra', ''),
+    ('insere_planeja', ''),
+    ('insere_oferecimento', ''),
+    ('insere_cursa', ''),
+    ('insere_disciplina_no_modulo', '');
 
 INSERT INTO us_pf
     (us_id, pf_id)
 VALUES
-    ((SELECT us_id FROM users WHERE us_email = 'russo@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'root')),
-    ((SELECT us_id FROM users WHERE us_email = 'lg@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'root')),
-    ((SELECT us_id FROM users WHERE us_email = 'vh@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'main')),
-    ((SELECT us_id FROM users WHERE us_email = 'damara@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'admin')),
-    ((SELECT us_id FROM users WHERE us_email = 'carlinhos@usp.br'), (SELECT id FROM Perfil WHERE nome = 'root')),
-    ((SELECT us_id FROM users WHERE us_email = 'jef@usp.br'), (SELECT id FROM Perfil WHERE nome = 'basic')),
-    ((SELECT us_id FROM users WHERE us_email = 'finger@usp.br'), (SELECT id FROM Perfil WHERE nome = 'limited')),
-    ((SELECT us_id FROM users WHERE us_email = 'germanohn@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'root')),
-    ((SELECT us_id FROM users WHERE us_email = 'marcel@usp.br'), (SELECT id FROM Perfil WHERE nome = 'limited')),
-    ((SELECT us_id FROM users WHERE us_email = 'cris@usp.br'), (SELECT id FROM Perfil WHERE nome = 'basic'));
+    ((SELECT us_id FROM users WHERE us_email = 'russo@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
+    ((SELECT us_id FROM users WHERE us_email = 'lg@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
+    ((SELECT us_id FROM users WHERE us_email = 'vh@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'aluno')),
+    ((SELECT us_id FROM users WHERE us_email = 'damara@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'administrador')),
+    ((SELECT us_id FROM users WHERE us_email = 'carlinhos@usp.br'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
+    ((SELECT us_id FROM users WHERE us_email = 'jef@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor')),
+    ((SELECT us_id FROM users WHERE us_email = 'finger@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor')),
+    ((SELECT us_id FROM users WHERE us_email = 'germanohn@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
+    ((SELECT us_id FROM users WHERE us_email = 'marcel@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor')),
+    ((SELECT us_id FROM users WHERE us_email = 'cris@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor'));
 
 INSERT INTO pf_se
     (pf_id, se_id)
 VALUES
-    ((SELECT id FROM Perfil WHERE nome = 'root'), ((SELECT id FROM Servico WHERE nome = 'add_user'))),
-    ((SELECT id FROM Perfil WHERE nome = 'main'), ((SELECT id FROM Servico WHERE nome = 'add_discipline'))),
-    ((SELECT id FROM Perfil WHERE nome = 'admin'), ((SELECT id FROM Servico WHERE nome = 'edit_user'))),
-    ((SELECT id FROM Perfil WHERE nome = 'basic'), ((SELECT id FROM Servico WHERE nome = 'edit_discipline'))),
-    ((SELECT id FROM Perfil WHERE nome = 'limited'), ((SELECT id FROM Servico WHERE nome = 'check_track_status'))),
-    ((SELECT id FROM Perfil WHERE nome = 'root'), ((SELECT id FROM Servico WHERE nome = 'add_student'))),
-    ((SELECT id FROM Perfil WHERE nome = 'main'), ((SELECT id FROM Servico WHERE nome = 'add_module'))),
-    ((SELECT id FROM Perfil WHERE nome = 'admin'), ((SELECT id FROM Servico WHERE nome = 'remove_discipline'))),
-    ((SELECT id FROM Perfil WHERE nome = 'basic'), ((SELECT id FROM Servico WHERE nome = 'edit_module'))),
-    ((SELECT id FROM Perfil WHERE nome = 'limited'), ((SELECT id FROM Servico WHERE nome = 'add_planned offering')));
+    ((SELECT id FROM Perfil WHERE nome = 'visitante'), (SELECT id FROM Servico WHERE nome = 'insere_aluno')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_curriculo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_disciplina')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_trilha')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_modulo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_ministra')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_planeja')),
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'insere_oferecimento')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_cursa')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_disciplina_no_modulo'));
