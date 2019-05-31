@@ -14,3 +14,11 @@ select insere_planeja('9298041', 'MAC0876');
 select insere_oferecimento('9298041', 'MAC0876', '2019/1');
 select insere_cursa('9298041', (SELECT id from Oferecimento WHERE di_codigo='MAC0876'));
 select insere_disciplina_no_modulo('MAC0876', 'M12', TRUE);
+
+select authorize((select us_id from users where us_email='a@z.com'), 'insere_aluno') = 'true' AS teste_authorize;
+select authorize((select us_id from users where us_email='a@z.com'), 'banana') = 'false' AS test_unauthorize;
+select * from get_curriculos('9298041');
+select * from get_trilhas('45x');
+select * from get_modulos('T34');
+select * from get_disciplinas_do_modulo('M12');
+select * from get_disciplinas_do_curriculo('45');
