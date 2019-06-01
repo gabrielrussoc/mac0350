@@ -68,3 +68,59 @@ BEGIN
     FROM get_trilhas(cu_codigo) t, LATERAL get_modulos(t.codigo) m, LATERAL get_disciplinas_do_modulo(m.codigo) d;
 END; $$  
 LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_disciplinas_cursadas(
+    al_NUSP varchar(9)
+)
+RETURNS SETOF Disciplina AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT Disciplina.*
+    FROM Cursa 
+    JOIN Oferecimento ON Cursa.of_id = Oferecimento.ID
+    JOIN Disciplina ON Oferecimento.di_codigo = Disciplina.codigo
+    WHERE Cursa.al_NUSP = get_disciplinas_cursadas.al_NUSP;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_disciplinas_planejadas(
+    al_NUSP varchar(9)
+)
+RETURNS SETOF Disciplina AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT Disciplina.*
+    FROM Planeja 
+    JOIN Disciplina ON Planeja.di_codigo = Disciplina.codigo
+    WHERE Planeja.al_NUSP = get_disciplinas_planejadas.al_NUSP;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_creditos_cursados(
+    al_NUSP varchar(9)
+)
+RETURNS INTEGER AS $$
+DECLARE
+    total INTEGER;
+BEGIN
+    SELECT SUM(creditos) into total
+    FROM get_disciplinas_cursadas(al_NUSP);
+
+    RETURN total;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_creditos_planejados(
+    al_NUSP varchar(9)
+)
+RETURNS INTEGER AS $$
+DECLARE
+    total INTEGER;
+BEGIN
+    SELECT SUM(creditos) into total
+    FROM get_disciplinas_planejadas(al_NUSP);
+
+    RETURN total;
+END; $$  
+LANGUAGE plpgsql;
+
