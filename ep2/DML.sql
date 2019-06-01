@@ -257,10 +257,13 @@ VALUES
     ('insere_oferecimento', ''),
     ('insere_cursa', ''),
     ('insere_disciplina_no_modulo', ''),
-    ('lista_disciplina_cursadas', ''),
+    ('lista_disciplinas_cursadas', ''),
     ('lista_disciplinas_planejadas', ''),
     ('creditos_cursados', ''),
-    ('creditos_planejados', '');
+    ('creditos_planejados', ''),
+    ('lista_disciplinas_ministradas', ''),
+    ('lista_disciplinas_oferecidas', ''),
+    ('lista_alunos_do_oferecimento', '');
 
 INSERT INTO us_pf
     (us_id, pf_id)
@@ -289,7 +292,10 @@ VALUES
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'insere_oferecimento')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_cursa')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_disciplina_no_modulo')),
-    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'lista_disciplina_cursadas')),
-    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'lista_disciplina_planejadas')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_cursadas')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_planejadas')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'creditos_cursados')),
-    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'creditos_planejados'));
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'creditos_planejados')),
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_ministradas')),
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_oferecidas')),
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento'));

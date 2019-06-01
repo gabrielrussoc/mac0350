@@ -28,3 +28,7 @@ select get_disciplinas_cursadas('9298041');
 select get_disciplinas_planejadas('9298041');
 select get_creditos_cursados('9298041');
 select get_creditos_planejados('9298041');
+
+select get_alunos_do_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0876' AND pr_NUSP = '9298041'));
+select get_disciplinas_ministradas('9298041');
+select get_disciplinas_oferecidas('9298041');

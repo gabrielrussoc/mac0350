@@ -124,3 +124,43 @@ BEGIN
 END; $$  
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_alunos_do_oferecimento(
+    of_id INTEGER
+)
+RETURNS SETOF Aluno AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT Aluno.*
+    FROM Oferecimento
+    JOIN Cursa ON Oferecimento.ID = Cursa.of_id
+    JOIN Aluno ON Cursa.al_NUSP = Aluno.NUSP
+    WHERE Oferecimento.id = get_alunos_do_oferecimento.of_id;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_disciplinas_ministradas(
+    pr_NUSP varchar(9)
+)
+RETURNS SETOF Disciplina AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT Disciplina.*
+    FROM Ministra
+    JOIN Disciplina ON Ministra.di_codigo = Disciplina.codigo
+    WHERE Ministra.pr_NUSP = get_disciplinas_ministradas.pr_NUSP;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_disciplinas_oferecidas(
+    pr_NUSP varchar(9)
+)
+RETURNS SETOF Disciplina AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT Disciplina.*
+    FROM Oferecimento
+    JOIN Disciplina ON Oferecimento.di_codigo = Disciplina.codigo
+    WHERE Oferecimento.pr_NUSP = get_disciplinas_oferecidas.pr_NUSP;
+END; $$  
+LANGUAGE plpgsql;
+
