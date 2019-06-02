@@ -270,7 +270,7 @@ VALUES
     ('atualiza_trilha',''),
     ('atualiza_modulo',''),
     ('atualiza_obrigatoria',''),
-    ('atualiza_senha','');
+    ('atualiza_senha',''),
     ('deleta_relacao_ministra', ''),
     ('deleta_relacao_planeja', ''),
     ('deleta_oferecimento', ''),
@@ -321,7 +321,7 @@ VALUES
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_ministradas')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_oferecidas')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento')),
-    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'atualiza_nota'));
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'atualiza_nota')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_ministra')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_planeja')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_oferecimento')),
