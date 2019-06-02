@@ -32,3 +32,13 @@ select get_creditos_planejados('9298041');
 select get_alunos_do_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0876' AND pr_NUSP = '9298041'));
 select get_disciplinas_ministradas('9298041');
 select get_disciplinas_oferecidas('9298041');
+
+select update_pessoa('95811319062', 'LG', 'M', '1994-04-15');
+select update_professor('9298100', 'IME', 'BCC');
+select update_curriculo('45', '9298111', 'BCC Antigo', 'IME', 'Soh as reliquia');
+select update_aluno('9298120', '46');
+select update_disciplina('MAC0123', 'Introdução a introduções introdutorias', 'IME', 'A', 8);
+select update_nota('9298041', 21, 7);
+select update_trilha('T01', 'Sistemas de Software', 'Lorem ipsum', '46');
+select update_modulo('M01', 'Desenvolvimento de Software', 'Lorem Ipsum', 'T01');
+select update_obrigatoria('MAC0123', 'M01', true);
