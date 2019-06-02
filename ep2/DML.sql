@@ -263,7 +263,16 @@ VALUES
     ('creditos_planejados', ''),
     ('lista_disciplinas_ministradas', ''),
     ('lista_disciplinas_oferecidas', ''),
-    ('lista_alunos_do_oferecimento', '');
+    ('lista_alunos_do_oferecimento', ''),
+    ('deleta_relacao_ministra', ''),
+    ('deleta_relacao_planeja', ''),
+    ('deleta_oferecimento', ''),
+    ('deleta_relacao_cursa', ''),
+    ('deleta_relacao_disciplina_modulo', ''),
+    ('deleta_disciplina', ''),
+    ('deleta_curriculo', ''),
+    ('deleta_trilha', ''),
+    ('deleta_modulo', '');
 
 INSERT INTO us_pf
     (us_id, pf_id)
@@ -298,4 +307,13 @@ VALUES
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'creditos_planejados')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_ministradas')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_oferecidas')),
-    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento'));
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_ministra')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_planeja')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_oferecimento')),
+    ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_cursa')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_relacao_disciplina_modulo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_disciplina')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_curriculo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_trilha')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'deleta_modulo'));
