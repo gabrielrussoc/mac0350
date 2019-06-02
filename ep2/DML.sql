@@ -85,16 +85,16 @@ VALUES
 INSERT INTO Administrador 
     (pe_CPF, NUSP, cargo) 
 VALUES
-    ('95811319071', '9298110', 'banana'),
-    ('95811319072', '9298111', 'banana'),
-    ('95811319073', '9298112', 'banana'),
-    ('95811319074', '9298113', 'banana'),
-    ('95811319075', '9298114', 'banana'),
-    ('95811319076', '9298115', 'banana'),
-    ('95811319077', '9298116', 'banana'),
-    ('95811319078', '9298117', 'banana'),
-    ('95811319079', '9298118', 'banana'),
-    ('95811319070', '9298119', 'banana');
+    ('95811319071', '9298110', 'assistente administrativo'),
+    ('95811319072', '9298111', 'auxiliar administrativo'),
+    ('95811319073', '9298112', 'secretario'),
+    ('95811319074', '9298113', 'subsecretario'),
+    ('95811319075', '9298114', 'secretario'),
+    ('95811319076', '9298115', 'secretario'),
+    ('95811319077', '9298116', 'auxiliar administrativo'),
+    ('95811319078', '9298117', 'auxiliar administrativo'),
+    ('95811319079', '9298118', 'assistente administrativo'),
+    ('95811319070', '9298119', 'secretario');
 
 INSERT INTO Curriculo 
     (codigo, ad_NUSP, nome, instituto) 
@@ -125,18 +125,18 @@ VALUES
     ('95811319080', '9298129', '44');
 
 INSERT INTO Disciplina 
-    (codigo, nome) 
+    (codigo, nome, departamento, descricao, creditos)
 VALUES
-    ('MAC0123', 'Introdução a introduções'),
-    ('MAC0124', 'Introdução ao MAC'),
-    ('MAC0125', 'Introdução a computação'),
-    ('MAC0126', 'Introdução a matemática'),
-    ('MAC0127', 'Introdução a faculdade'),
-    ('MAC0128', 'Introdução a programação'),
-    ('MAC0129', 'Introdução a algoritmos'),
-    ('MAC0120', 'Introdução a estruturas de dados'),
-    ('MAC0121', 'Introdução a autômatos'),
-    ('MAC0122', 'Introdução a universidade');
+    ('MAC0123', 'Introdução a introduções', 'DCC', '', 4),
+    ('MAC0124', 'Introdução ao MAC', 'DCC', '', 4),
+    ('MAC0125', 'Introdução a computação', 'DCC', '', 4),
+    ('MAC0126', 'Introdução a matemática', 'DCC', '', 4),
+    ('MAC0127', 'Introdução a faculdade', 'DCC', '', 4),
+    ('MAC0128', 'Introdução a programação', 'DCC', '', 4),
+    ('MAC0129', 'Introdução a algoritmos', 'DCC', '', 4),
+    ('MAC0120', 'Introdução a estruturas de dados', 'DCC', '', 4),
+    ('MAC0121', 'Introdução a autômatos', 'DCC', '', 4),
+    ('MAC0122', 'Introdução a universidade', 'DCC', '', 4);
 
 INSERT INTO Ministra 
     (pr_NUSP, di_codigo) 
@@ -197,30 +197,30 @@ VALUES
 INSERT INTO Trilha
     (codigo, nome, descricao, cu_codigo)
 VALUES
-    ('T01', 'Sistemas de Software', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '45'),
-    ('T02', 'Ciências de Dados', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '46'),
-    ('T03', 'Inteligência Artificial', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '47'),
-    ('T04', 'Teoria da Computação', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '48'),
-    ('T05', 'Automatização', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '49'),
-    ('T06', 'Telecomunicações', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '40'),
-    ('T07', 'Literatura', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '41'),
-    ('T08', 'Ciência Política', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '42'),
-    ('T09', 'História Mundial', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '43'),
-    ('T10', 'Sistemas de Banco de Dados', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', '44');
+    ('T01', 'Sistemas de Software', 'bla', '45'),
+    ('T02', 'Ciências de Dados', 'ble', '46'),
+    ('T03', 'Inteligência Artificial', 'bli', '47'),
+    ('T04', 'Teoria da Computação', 'blo', '48'),
+    ('T05', 'Automatização', 'blu', '49'),
+    ('T06', 'Telecomunicações', 'bla', '40'),
+    ('T07', 'Literatura', 'ble', '41'),
+    ('T08', 'Ciência Política', 'bli', '42'),
+    ('T09', 'História Mundial', 'blo', '43'),
+    ('T10', 'Sistemas de Banco de Dados', 'blu', '44');
 
 INSERT INTO Modulo
     (codigo, nome, descricao, tr_codigo)
 VALUES
-    ('M01', 'Desenvolvimento de Software', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T01'),
-    ('M02', 'Sistemas Paralelos e Distribuídos', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T01'),
-    ('M03', 'Inteligência Artificial', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T03'),
-    ('M04', 'Introdução à IA', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T03'),
-    ('M05', 'Algoritmos I', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T04'),
-    ('M06', 'Otimização I', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T04'),
-    ('M07', 'Matemática Discreta II', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T04'),
-    ('M08', 'Bancos de Dados', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T10'),
-    ('M09', 'Segunda Guerra Mundial', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T09'),
-    ('M10', 'Machado de Assis', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, quibusdam. Optio voluptates at, voluptatibus sed perspiciatis fuga est laudantium nostrum possimus corporis repudiandae veritatis, eveniet accusamus incidunt reiciendis doloremque necessitatibus!', 'T07');
+    ('M01', 'Desenvolvimento de Software', 'Lorem ipsum', 'T01'),
+    ('M02', 'Sistemas Paralelos e Distribuídos', 'Lorem dolor', 'T01'),
+    ('M03', 'Inteligência Artificial', 'Lorem dolor', 'T03'),
+    ('M04', 'Introdução à IA', 'Lorem ipsum', 'T03'),
+    ('M05', 'Algoritmos I', 'Lorem dolor', 'T04'),
+    ('M06', 'Otimização I', 'Lorem ipsum', 'T04'),
+    ('M07', 'Matemática Discreta II', 'Lorem dolor', 'T04'),
+    ('M08', 'Bancos de Dados', 'Lorem ipsum', 'T10'),
+    ('M09', 'Segunda Guerra Mundial', 'Lorem ipsum', 'T09'),
+    ('M10', 'Machado de Assis', 'Lorem dolor', 'T07');
 
 INSERT INTO rel_dis_mod 
     (di_codigo, mo_codigo, obrigatoria)
@@ -252,34 +252,34 @@ VALUES
     ('insere_disciplina', 'Cadastro de disciplina na base de dados'),
     ('insere_trilha', 'Cadastro de trilha na base de dados'),
     ('insere_modulo', 'Cadastro de modulo na base de dados'),
-    ('insere_ministra', ''),
-    ('insere_planeja', ''),
-    ('insere_oferecimento', ''),
-    ('insere_cursa', ''),
-    ('insere_disciplina_no_modulo', ''),
-    ('lista_disciplinas_cursadas', ''),
-    ('lista_disciplinas_planejadas', ''),
-    ('creditos_cursados', ''),
-    ('creditos_planejados', ''),
-    ('lista_disciplinas_ministradas', ''),
-    ('lista_disciplinas_oferecidas', ''),
-    ('lista_alunos_do_oferecimento', ''),
-    ('atualiza_curriculo',''),
-    ('atualiza_disciplina',''),
-    ('atualiza_nota',''),
-    ('atualiza_trilha',''),
-    ('atualiza_modulo',''),
-    ('atualiza_obrigatoria',''),
-    ('atualiza_senha',''),
-    ('deleta_relacao_ministra', ''),
-    ('deleta_relacao_planeja', ''),
-    ('deleta_oferecimento', ''),
-    ('deleta_relacao_cursa', ''),
-    ('deleta_relacao_disciplina_modulo', ''),
-    ('deleta_disciplina', ''),
-    ('deleta_curriculo', ''),
-    ('deleta_trilha', ''),
-    ('deleta_modulo', '');
+    ('insere_ministra', 'Cadastro de professores que ministram uma disciplina'),
+    ('insere_planeja', 'Cadastro de alunos que planejam cursar uma disciplina'),
+    ('insere_oferecimento', 'Cadastro de professores que oferecem uma disciplina'),
+    ('insere_cursa', 'Cadastro de alunos que cursam uma disciplina'),
+    ('insere_disciplina_no_modulo', 'Cadastro de disciplina num modulo'),
+    ('lista_disciplinas_cursadas', 'Listagem das disciplinas cursadas por um aluno'),
+    ('lista_disciplinas_planejadas', 'Listagem das disciplinas planejadas por um aluno'),
+    ('creditos_cursados', 'Contagem de creditos cursados por um aluno'),
+    ('creditos_planejados', 'Contagem de creditos planejados por um aluno'),
+    ('lista_disciplinas_ministradas', 'Listagem das disciplinas ministradas por um professor'),
+    ('lista_disciplinas_oferecidas', 'Listagem das disciplinas oferecidas por um professor'),
+    ('lista_alunos_do_oferecimento', 'Listagem dos alunos matriculados num oferecimento'),
+    ('atualiza_curriculo','Atualizacao de um curriculo'),
+    ('atualiza_disciplina','Atualizacao de uma disciplina'),
+    ('atualiza_nota','Atualizacao de uma nota'),
+    ('atualiza_trilha','Atualizacao de uma trilha'),
+    ('atualiza_modulo','Atualizacao de um modulo'),
+    ('atualiza_obrigatoria','Atualizacao da obrigatoriedade de uma disciplina'),
+    ('atualiza_senha','Atualizacao da senha de um usuario'),
+    ('deleta_relacao_ministra', 'Remove um ministramento de professor'),
+    ('deleta_relacao_planeja', 'Remove um planejamento de aluno'),
+    ('deleta_oferecimento', 'Remove um oferecimento de professor'),
+    ('deleta_relacao_cursa', 'Remove a matricula de um aluno num oferecimento'),
+    ('deleta_relacao_disciplina_modulo', 'Remove uma disciplina de um modulo'),
+    ('deleta_disciplina', 'Remove uma disciplina'),
+    ('deleta_curriculo', 'Remove um curriculo'),
+    ('deleta_trilha', 'Remove uma trilha'),
+    ('deleta_modulo', 'Remove um modulo');
 
 INSERT INTO us_pf
     (us_id, pf_id)
