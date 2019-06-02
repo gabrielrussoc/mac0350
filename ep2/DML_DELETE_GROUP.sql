@@ -3,7 +3,7 @@ Remove um relacionamento ministra.
   @param pr_NUSP: número USP do professor que ministra a disciplina
   @param di_codigo: código da disciplina
 */
-CREATE OR REPLACE FUNCTION delete_ministra(
+CREATE OR REPLACE FUNCTION deleta_ministra(
   professor_NUSP varchar(9), 
   disciplina_codigo varchar(7)
 )
@@ -23,7 +23,7 @@ Remove um relacionamento planeja.
   @param al_NUSP: número USP do aluno que planeja cursar a disciplina
   @param di_codigo: código da disciplina
 */
-CREATE OR REPLACE FUNCTION delete_planeja(
+CREATE OR REPLACE FUNCTION deleta_planeja(
   aluno_NUSP varchar(9),
   disciplina_codigo varchar(7)
 )
@@ -42,7 +42,7 @@ LANGUAGE plpgsql;
 Remove um oferecimento.
   @param oferimento_id: id do oferecimento
 */
-CREATE OR REPLACE FUNCTION delete_oferecimento(
+CREATE OR REPLACE FUNCTION deleta_oferecimento(
   oferimento_id INTEGER
 )
 RETURNS void AS $$
@@ -60,7 +60,7 @@ Remove um relacionamento cursa.
   @param al_NUSP: número USP aluno que cursa a disciplina
   @param of_id: id do oferecimento
 */
-CREATE OR REPLACE FUNCTION delete_cursa(
+CREATE OR REPLACE FUNCTION deleta_cursa(
   aluno_NUSP varchar(9),
   oferecimento_id INTEGER
 )
@@ -80,7 +80,7 @@ Remove um relacionamento rel_dis_mod.
   @param disciplina_codigo: código da disciplina
   @param modulo_codigo: código do módulo
 */
-CREATE OR REPLACE FUNCTION delete_rel_dis_mod(
+CREATE OR REPLACE FUNCTION deleta_rel_dis_mod(
   disciplina_codigo varchar(7),
   modulo_codigo varchar(3)
 )
@@ -99,7 +99,7 @@ LANGUAGE plpgsql;
 Remove uma disciplina.
   @param dis_codigo: código da disciplina
 */
-CREATE OR REPLACE FUNCTION delete_disciplina(
+CREATE OR REPLACE FUNCTION deleta_disciplina(
   dis_codigo varchar(7)
 )
 RETURNS void AS $$
@@ -116,7 +116,7 @@ LANGUAGE plpgsql;
 Remove um currículo.
   @param cur_codigo: código do currículo
 */
-CREATE OR REPLACE FUNCTION delete_curriculo(
+CREATE OR REPLACE FUNCTION deleta_curriculo(
   cur_codigo varchar(64)
 )
 RETURNS void AS $$
@@ -133,7 +133,7 @@ LANGUAGE plpgsql;
 Remove uma trilha.
   @param trilha_codigo: código da trilha
 */
-CREATE OR REPLACE FUNCTION delete_trilha(
+CREATE OR REPLACE FUNCTION deleta_trilha(
   trilha_codigo varchar(3)
 )
 RETURNS void AS $$
@@ -150,7 +150,7 @@ LANGUAGE plpgsql;
 Remove um módulo.
   @param mod_codigo: código do módulo
 */
-CREATE OR REPLACE FUNCTION delete_modulo(
+CREATE OR REPLACE FUNCTION deleta_modulo(
   mod_codigo varchar(3)
 )
 RETURNS void AS $$

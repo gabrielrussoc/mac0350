@@ -6,7 +6,7 @@ Atualiza um curriculo.
   @param cu_instituto: instituto do currículo
   @param cu_descricao: descrição do curriculo
 */
-CREATE OR REPLACE FUNCTION update_curriculo(
+CREATE OR REPLACE FUNCTION atualiza_curriculo(
   cu_codigo varchar(64),
   cu_ad_NUSP varchar(9),
   cu_nome varchar(255),
@@ -32,7 +32,7 @@ Atualiza uma disciplina.
   @param di_descricao: descrição da disciplina
   @param di_creditos: descrição da disciplina
 */
-CREATE OR REPLACE FUNCTION update_disciplina(
+CREATE OR REPLACE FUNCTION atualiza_disciplina(
   di_codigo varchar(7),
   di_nome varchar(128),
   di_departamento varchar(128),
@@ -56,7 +56,7 @@ Atualiza a nota de um aluno.
   @param of_id: id do oferecimento cursado
   @param nota: inteiro 0-10
 */
-CREATE OR REPLACE FUNCTION update_nota(
+CREATE OR REPLACE FUNCTION atualiza_nota(
   al_NUSP varchar(9),
   of_id integer,
   nota integer
@@ -65,8 +65,8 @@ RETURNS void AS $$
 #variable_conflict use_column
 BEGIN
   UPDATE Cursa
-  SET nota = update_nota.nota
-  WHERE (al_NUSP = update_nota.al_NUSP AND of_id = update_nota.of_id);
+  SET nota = atualiza_nota.nota
+  WHERE (al_NUSP = atualiza_nota.al_NUSP AND of_id = atualiza_nota.of_id);
 END; $$
 LANGUAGE plpgsql;
 
@@ -77,7 +77,7 @@ Atualiza uma trilha.
   @param descricao: descrição da trilha
   @param cu_codigo: código do curriculo da trilha
 */
-CREATE OR REPLACE FUNCTION update_trilha(
+CREATE OR REPLACE FUNCTION atualiza_trilha(
   codigo varchar(3),
   nome varchar(64),
   descricao text,
@@ -87,10 +87,10 @@ RETURNS void AS $$
 #variable_conflict use_column
 BEGIN
   UPDATE Trilha
-  SET nome = update_trilha.nome,
-      descricao = update_trilha.descricao,
-      cu_codigo = update_trilha.cu_codigo
-  WHERE codigo = update_trilha.codigo;
+  SET nome = atualiza_trilha.nome,
+      descricao = atualiza_trilha.descricao,
+      cu_codigo = atualiza_trilha.cu_codigo
+  WHERE codigo = atualiza_trilha.codigo;
 END; $$
 LANGUAGE plpgsql;
 
@@ -101,7 +101,7 @@ Atualiza um módulo.
   @param descricao: descrição do módulo
   @param tr_codigo: código da trilha do módulo
 */
-CREATE OR REPLACE FUNCTION update_modulo(
+CREATE OR REPLACE FUNCTION atualiza_modulo(
   codigo varchar(3),
   nome varchar(64),
   descricao text,
@@ -111,10 +111,10 @@ RETURNS void AS $$
 #variable_conflict use_column
 BEGIN
   UPDATE Modulo
-  SET nome = update_modulo.nome,
-      descricao = update_modulo.descricao,
-      tr_codigo = update_modulo.tr_codigo
-  WHERE codigo = update_modulo.codigo;
+  SET nome = atualiza_modulo.nome,
+      descricao = atualiza_modulo.descricao,
+      tr_codigo = atualiza_modulo.tr_codigo
+  WHERE codigo = atualiza_modulo.codigo;
 END; $$
 LANGUAGE plpgsql;
 
@@ -124,7 +124,7 @@ Atualiza se uma disciplina é obrigatória em um módulo.
   @param mo_codigo: código do módulo
   @param obrigatoria: booleano
 */
-CREATE OR REPLACE FUNCTION update_obrigatoria(
+CREATE OR REPLACE FUNCTION atualiza_obrigatoria(
   di_codigo varchar(7),
   mo_codigo varchar(3),
   obrigatoria boolean
@@ -133,8 +133,8 @@ RETURNS void AS $$
 #variable_conflict use_column
 BEGIN
   UPDATE rel_dis_mod
-  SET obrigatoria = update_obrigatoria.obrigatoria
-  WHERE (di_codigo = update_obrigatoria.di_codigo AND mo_codigo = update_obrigatoria.mo_codigo);
+  SET obrigatoria = atualiza_obrigatoria.obrigatoria
+  WHERE (di_codigo = atualiza_obrigatoria.di_codigo AND mo_codigo = atualiza_obrigatoria.mo_codigo);
 END; $$
 LANGUAGE plpgsql;
 
@@ -143,7 +143,7 @@ Atualiza a senha de um usuário.
   @param us_id: id do usuário
   @param us_password: senha
 */
-CREATE OR REPLACE FUNCTION update_password(
+CREATE OR REPLACE FUNCTION atualiza_password(
   us_id       integer,
   us_password TEXT
 )
@@ -151,7 +151,7 @@ RETURNS void AS $$
 #variable_conflict use_column
 BEGIN
   UPDATE users
-  SET us_password = crypt(update_password.us_password, gen_salt('bf'))
-  WHERE us_id = update_password.us_id;
+  SET us_password = crypt(atualiza_password.us_password, gen_salt('bf'))
+  WHERE us_id = atualiza_password.us_id;
 END; $$
 LANGUAGE plpgsql;

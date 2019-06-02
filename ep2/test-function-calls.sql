@@ -33,20 +33,20 @@ select get_alunos_do_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo =
 select get_disciplinas_ministradas('9298041');
 select get_disciplinas_oferecidas('9298041');
 
-select update_curriculo('45', '9298111', 'BCC Antigo', 'IME', 'Soh as reliquia');
-select update_disciplina('MAC0123', 'Introdução a introduções introdutorias', 'IME', 'A', 8);
-select update_nota('9298041', 21, 7);
-select update_trilha('T01', 'Sistemas de Software', 'Lorem ipsum', '46');
-select update_modulo('M01', 'Desenvolvimento de Software', 'Lorem Ipsum', 'T01');
-select update_obrigatoria('MAC0123', 'M01', true);
-select update_password(1, 'capivara');
+select atualiza_curriculo('45', '9298111', 'BCC Antigo', 'IME', 'Soh as reliquia');
+select atualiza_disciplina('MAC0123', 'Introdução a introduções introdutorias', 'IME', 'A', 8);
+select atualiza_nota('9298041', 21, 7);
+select atualiza_trilha('T01', 'Sistemas de Software', 'Lorem ipsum', '46');
+select atualiza_modulo('M01', 'Desenvolvimento de Software', 'Lorem Ipsum', 'T01');
+select atualiza_obrigatoria('MAC0123', 'M01', true);
+select atualiza_password(1, 'capivara');
 
-select delete_ministra('9298100', 'MAC0123');
-select delete_planeja('9298123', 'MAC0126');
-select delete_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0876' AND pr_NUSP = '9298041'));
-select delete_cursa('9298121', (SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0124' AND semestre = '2018/2'));
-select delete_rel_dis_mod('MAC0123', 'M01');
-select delete_disciplina('MAC0120');
-select delete_curriculo('45');
-select delete_trilha('T01');
-select delete_modulo('M01');
+select deleta_ministra('9298100', 'MAC0123');
+select deleta_planeja('9298123', 'MAC0126');
+select deleta_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0876' AND pr_NUSP = '9298041'));
+select deleta_cursa('9298121', (SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0124' AND semestre = '2018/2'));
+select deleta_rel_dis_mod('MAC0123', 'M01');
+select deleta_disciplina('MAC0120');
+select deleta_curriculo('45');
+select deleta_trilha('T01');
+select deleta_modulo('M01');
