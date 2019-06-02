@@ -18,7 +18,7 @@ RETURNS void AS $$
 DECLARE new_id INTEGER;
 BEGIN
   INSERT INTO users (us_email, us_password) 
-  VALUES (us_email, us_pass)
+  VALUES (us_email, crypt(us_pass, gen_salt('bf')))
   RETURNING us_id INTO new_id;
 
   INSERT INTO Pessoa (CPF, nome, sexo, data_nascimento, us_id)
