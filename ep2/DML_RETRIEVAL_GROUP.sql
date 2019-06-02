@@ -15,7 +15,7 @@ BEGIN
       SELECT * FROM us_pf
       INNER JOIN pf_se ON us_pf.pf_id = pf_se.pf_id
       INNER JOIN Servico ON pf_se.se_id = Servico.id
-      WHERE us_pf.us_id = authorize.us_id AND Servico.nome = authorize.se_nome 
+      WHERE us_pf.us_id = autoriza.us_id AND Servico.nome = autoriza.se_nome 
   ) AS allowed;
 END; $$  
 LANGUAGE plpgsql;

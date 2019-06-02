@@ -153,7 +153,6 @@ CREATE TABLE Professor (
   pe_CPF varchar(11) not NULL,
   NUSP varchar(9) not NULL,
   instituto varchar(128) not NULL,
-  departamento varchar(128),
   CONSTRAINT pk_nusp PRIMARY KEY (NUSP),
   CONSTRAINT fk_pessoa FOREIGN KEY (pe_CPF)
     REFERENCES Pessoa(CPF)

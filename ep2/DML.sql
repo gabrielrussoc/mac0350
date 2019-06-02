@@ -69,18 +69,18 @@ VALUES
     ('95811319090', 'u', 'M', '2017-03-16', (SELECT us_id FROM users WHERE us_email = 'u@usp.br'));
 
 INSERT INTO Professor 
-    (pe_CPF, NUSP, instituto, departamento) 
+    (pe_CPF, NUSP, instituto) 
 VALUES
-    ('95811319061', '9298100', 'IME', 'Ciência da Computação'),
-    ('95811319062', '9298101', 'IME', 'Ciência da Computação'),
-    ('95811319063', '9298102', 'IME', 'Ciência da Computação'),
-    ('95811319064', '9298103', 'IME', 'Ciência da Computação'),
-    ('95811319065', '9298104', 'IME', 'Ciência da Computação'),
-    ('95811319066', '9298105', 'IME', 'Ciência da Computação'),
-    ('95811319067', '9298106', 'IME', 'Ciência da Computação'),
-    ('95811319068', '9298107', 'IME', 'Ciência da Computação'),
-    ('95811319069', '9298108', 'IME', 'Ciência da Computação'),
-    ('95811319060', '9298109', 'IME', 'Ciência da Computação');
+    ('95811319061', '9298100', 'IME'),
+    ('95811319062', '9298101', 'IME'),
+    ('95811319063', '9298102', 'IME'),
+    ('95811319064', '9298103', 'IME'),
+    ('95811319065', '9298104', 'IME'),
+    ('95811319066', '9298105', 'IME'),
+    ('95811319067', '9298106', 'IME'),
+    ('95811319068', '9298107', 'IME'),
+    ('95811319069', '9298108', 'IME'),
+    ('95811319060', '9298109', 'IME');
 
 INSERT INTO Administrador 
     (pe_CPF, NUSP, cargo) 

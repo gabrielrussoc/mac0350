@@ -62,18 +62,16 @@ Cadastra um novo professor.
   @param pe_CPF: CPF do professor
   @param NUSP: número USP do aluno
   @param instituto: instituto do professor
-  @param departamento: departamento do professor
 */
 CREATE OR REPLACE FUNCTION insere_professor(
   pe_CPF varchar(11),
   NUSP varchar(9),
-  instituto varchar(128),
-  departamento varchar(128)
+  instituto varchar(128)
 )
 RETURNS void AS $$
 BEGIN
-  INSERT INTO Professor (pe_CPF, NUSP, instituto, departamento)
-  VALUES (pe_CPF, NUSP, instituto, departamento);
+  INSERT INTO Professor (pe_CPF, NUSP, instituto)
+  VALUES (pe_CPF, NUSP, instituto);
 
   INSERT INTO us_pf (us_id, pf_id)
   VALUES (
