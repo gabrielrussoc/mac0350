@@ -40,3 +40,13 @@ select update_trilha('T01', 'Sistemas de Software', 'Lorem ipsum', '46');
 select update_modulo('M01', 'Desenvolvimento de Software', 'Lorem Ipsum', 'T01');
 select update_obrigatoria('MAC0123', 'M01', true);
 select update_password(1, 'capivara');
+
+select delete_ministra('9298100', 'MAC0123');
+select delete_planeja('9298123', 'MAC0126');
+select delete_oferecimento((SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0876' AND pr_NUSP = '9298041'));
+select delete_cursa('9298121', (SELECT ID FROM Oferecimento WHERE di_codigo = 'MAC0124' AND semestre = '2018/2'));
+select delete_rel_dis_mod('MAC0123', 'M01');
+select delete_disciplina('MAC0120');
+select delete_curriculo('45');
+select delete_trilha('T01');
+select delete_modulo('M01');

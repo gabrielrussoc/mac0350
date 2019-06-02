@@ -9,5 +9,6 @@ psql -d jef -f DML.sql
 psql -d jef -f DML_CREATE_GROUP.sql
 psql -d jef -f DML_RETRIEVAL_GROUP.sql
 psql -d jef -f DML_UPDATE_GROUP.sql
+psql -d jef -f DML_DELETE_GROUP.sql
 
 psql -d jef -f test-function-calls.sql
