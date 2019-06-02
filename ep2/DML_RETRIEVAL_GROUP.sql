@@ -5,7 +5,7 @@ Checa se o usuário pode executar um serviço
 
   @return booleano: true se autorizado
 */
-CREATE OR REPLACE FUNCTION authorize(
+CREATE OR REPLACE FUNCTION autoriza(
   us_id INTEGER,
   se_nome varchar(64)
 )
@@ -26,14 +26,14 @@ Retorna lista de curriculos de um administrador
 
   @return set: lista de currículos
 */
-CREATE OR REPLACE FUNCTION get_curriculos(
+CREATE OR REPLACE FUNCTION lista_curriculos(
   ad_nusp varchar(9)
 )
 RETURNS SETOF Curriculo AS $$
 BEGIN
   RETURN QUERY
   SELECT * FROM Curriculo
-  WHERE Curriculo.ad_NUSP = get_curriculos.ad_nusp;
+  WHERE Curriculo.ad_NUSP = lista_curriculos.ad_nusp;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -43,14 +43,14 @@ Retorna lista de trilhas de um currículo
 
   @return set: lista de trilhas
 */
-CREATE OR REPLACE FUNCTION get_trilhas(
+CREATE OR REPLACE FUNCTION lista_trilhas(
   cu_codigo varchar(64)
 )
 RETURNS SETOF Trilha AS $$
 BEGIN
   RETURN QUERY
   SELECT * FROM Trilha
-  WHERE Trilha.cu_codigo = get_trilhas.cu_codigo;
+  WHERE Trilha.cu_codigo = lista_trilhas.cu_codigo;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -60,14 +60,14 @@ Retorna lista de módulos de uma  trilha
 
   @return set: lista de módulos
 */
-CREATE OR REPLACE FUNCTION get_modulos(
+CREATE OR REPLACE FUNCTION lista_modulos(
   tr_codigo varchar(3)
 )
 RETURNS SETOF Modulo AS $$
 BEGIN
   RETURN QUERY
   SELECT * FROM Modulo
-  WHERE Modulo.tr_codigo = get_modulos.tr_codigo;
+  WHERE Modulo.tr_codigo = lista_modulos.tr_codigo;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -77,7 +77,7 @@ Retorna lista de disciplinas de um módulo
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_do_modulo(
+CREATE OR REPLACE FUNCTION lista_disciplinas_do_modulo(
   mo_codigo varchar(3)
 )
 RETURNS SETOF Disciplina AS $$
@@ -85,7 +85,7 @@ BEGIN
   RETURN QUERY
   SELECT Disciplina.* FROM rel_dis_mod
   INNER JOIN Disciplina on Disciplina.codigo = rel_dis_mod.di_codigo
-  WHERE rel_dis_mod.mo_codigo = get_disciplinas_do_modulo.mo_codigo;
+  WHERE rel_dis_mod.mo_codigo = lista_disciplinas_do_modulo.mo_codigo;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -95,14 +95,14 @@ Retorna lista de disciplinas de um currículo
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_do_curriculo(
+CREATE OR REPLACE FUNCTION lista_disciplinas_do_curriculo(
   cu_codigo varchar(64)
 )
 RETURNS SETOF Disciplina AS $$
 BEGIN
   RETURN QUERY
   SELECT d.*
-  FROM get_trilhas(cu_codigo) t, LATERAL get_modulos(t.codigo) m, LATERAL get_disciplinas_do_modulo(m.codigo) d;
+  FROM lista_trilhas(cu_codigo) t, LATERAL lista_modulos(t.codigo) m, LATERAL lista_disciplinas_do_modulo(m.codigo) d;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -112,7 +112,7 @@ Retorna lista de disciplinas cursadas por um aluno
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_cursadas(
+CREATE OR REPLACE FUNCTION lista_disciplinas_cursadas(
   al_NUSP varchar(9)
 )
 RETURNS SETOF Disciplina AS $$
@@ -122,7 +122,7 @@ BEGIN
   FROM Cursa 
   JOIN Oferecimento ON Cursa.of_id = Oferecimento.ID
   JOIN Disciplina ON Oferecimento.di_codigo = Disciplina.codigo
-  WHERE Cursa.al_NUSP = get_disciplinas_cursadas.al_NUSP;
+  WHERE Cursa.al_NUSP = lista_disciplinas_cursadas.al_NUSP;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -132,7 +132,7 @@ Retorna lista de disciplinas planejadas por um aluno
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_planejadas(
+CREATE OR REPLACE FUNCTION lista_disciplinas_planejadas(
   al_NUSP varchar(9)
 )
 RETURNS SETOF Disciplina AS $$
@@ -141,7 +141,7 @@ BEGIN
   SELECT DISTINCT Disciplina.*
   FROM Planeja 
   JOIN Disciplina ON Planeja.di_codigo = Disciplina.codigo
-  WHERE Planeja.al_NUSP = get_disciplinas_planejadas.al_NUSP;
+  WHERE Planeja.al_NUSP = lista_disciplinas_planejadas.al_NUSP;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -151,7 +151,7 @@ Retorna número de créditos cursados por um aluno
 
   @return inteiro
 */
-CREATE OR REPLACE FUNCTION get_creditos_cursados(
+CREATE OR REPLACE FUNCTION lista_creditos_cursados(
   al_NUSP varchar(9)
 )
 RETURNS INTEGER AS $$
@@ -159,7 +159,7 @@ DECLARE
   total INTEGER;
 BEGIN
   SELECT SUM(creditos) into total
-  FROM get_disciplinas_cursadas(al_NUSP);
+  FROM lista_disciplinas_cursadas(al_NUSP);
 
   RETURN total;
 END; $$  
@@ -171,7 +171,7 @@ Retorna número de créditos planejados por um aluno
 
   @return inteiro
 */
-CREATE OR REPLACE FUNCTION get_creditos_planejados(
+CREATE OR REPLACE FUNCTION lista_creditos_planejados(
   al_NUSP varchar(9)
 )
 RETURNS INTEGER AS $$
@@ -179,7 +179,7 @@ DECLARE
   total INTEGER;
 BEGIN
   SELECT SUM(creditos) into total
-  FROM get_disciplinas_planejadas(al_NUSP);
+  FROM lista_disciplinas_planejadas(al_NUSP);
 
   RETURN total;
 END; $$  
@@ -191,7 +191,7 @@ Retorna lista de alunos matriculados em um oferecimento
 
   @return set: lista de alunos
 */
-CREATE OR REPLACE FUNCTION get_alunos_do_oferecimento(
+CREATE OR REPLACE FUNCTION lista_alunos_do_oferecimento(
   of_id INTEGER
 )
 RETURNS SETOF Aluno AS $$
@@ -201,7 +201,7 @@ BEGIN
   FROM Oferecimento
   JOIN Cursa ON Oferecimento.ID = Cursa.of_id
   JOIN Aluno ON Cursa.al_NUSP = Aluno.NUSP
-  WHERE Oferecimento.id = get_alunos_do_oferecimento.of_id;
+  WHERE Oferecimento.id = lista_alunos_do_oferecimento.of_id;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -211,7 +211,7 @@ Retorna lista de disciplinas ministradas por um professor
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_ministradas(
+CREATE OR REPLACE FUNCTION lista_disciplinas_ministradas(
   pr_NUSP varchar(9)
 )
 RETURNS SETOF Disciplina AS $$
@@ -220,7 +220,7 @@ BEGIN
   SELECT DISTINCT Disciplina.*
   FROM Ministra
   JOIN Disciplina ON Ministra.di_codigo = Disciplina.codigo
-  WHERE Ministra.pr_NUSP = get_disciplinas_ministradas.pr_NUSP;
+  WHERE Ministra.pr_NUSP = lista_disciplinas_ministradas.pr_NUSP;
 END; $$  
 LANGUAGE plpgsql;
 
@@ -230,7 +230,7 @@ Retorna lista de disciplinas oferecidas por um professor
 
   @return set: lista de disciplinas
 */
-CREATE OR REPLACE FUNCTION get_disciplinas_oferecidas(
+CREATE OR REPLACE FUNCTION lista_disciplinas_oferecidas(
   pr_NUSP varchar(9)
 )
 RETURNS SETOF Disciplina AS $$
@@ -239,7 +239,7 @@ BEGIN
   SELECT DISTINCT Disciplina.*
   FROM Oferecimento
   JOIN Disciplina ON Oferecimento.di_codigo = Disciplina.codigo
-  WHERE Oferecimento.pr_NUSP = get_disciplinas_oferecidas.pr_NUSP;
+  WHERE Oferecimento.pr_NUSP = lista_disciplinas_oferecidas.pr_NUSP;
 END; $$  
 LANGUAGE plpgsql;
 
