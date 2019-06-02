@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION delete_ministra(
+CREATE OR REPLACE FUNCTION deleta_ministra(
     professor_NUSP varchar(9), 
     disciplina_codigo varchar(7)
 )
@@ -13,7 +13,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_planeja(
+CREATE OR REPLACE FUNCTION deleta_planeja(
     aluno_NUSP varchar(9),
     disciplina_codigo varchar(7)
 )
@@ -28,7 +28,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_oferecimento(
+CREATE OR REPLACE FUNCTION deleta_oferecimento(
     oferimento_id INTEGER
 )
 RETURNS void AS $$
@@ -41,7 +41,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_cursa(
+CREATE OR REPLACE FUNCTION deleta_cursa(
     aluno_NUSP varchar(9),
     oferecimento_id INTEGER
 )
@@ -56,7 +56,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_rel_dis_mod(
+CREATE OR REPLACE FUNCTION deleta_rel_dis_mod(
     disciplina_codigo varchar(7),
     modulo_codigo varchar(3)
 )
@@ -71,7 +71,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_disciplina(
+CREATE OR REPLACE FUNCTION deleta_disciplina(
     dis_codigo varchar(7)
 )
 RETURNS void AS $$
@@ -84,7 +84,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_curriculo(
+CREATE OR REPLACE FUNCTION deleta_curriculo(
     cur_codigo varchar(64)
 )
 RETURNS void AS $$
@@ -97,7 +97,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_trilha(
+CREATE OR REPLACE FUNCTION deleta_trilha(
     trilha_codigo varchar(3)
 )
 RETURNS void AS $$
@@ -110,7 +110,7 @@ LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION delete_modulo(
+CREATE OR REPLACE FUNCTION deleta_modulo(
     mod_codigo varchar(3)
 )
 RETURNS void AS $$
