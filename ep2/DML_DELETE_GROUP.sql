@@ -6,7 +6,7 @@ RETURNS void AS $$
 BEGIN
     DELETE FROM Ministra
         WHERE pr_NUSP = professor_NUSP
-            AND di_codigo = disciplina_codigo
+            AND di_codigo = disciplina_codigo;
     
 END; $$
 LANGUAGE plpgsql;
@@ -21,7 +21,7 @@ RETURNS void AS $$
 BEGIN
     DELETE FROM Planeja
         WHERE al_NUSP = aluno_NUSP
-            AND di_codigo = disciplina_codigo
+            AND di_codigo = disciplina_codigo;
 
 END; $$
 LANGUAGE plpgsql;
@@ -29,27 +29,27 @@ LANGUAGE plpgsql;
 ------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION delete_oferecimento(
-    oferimento_id SERIAL
+    oferimento_id INTEGER
 )
 RETURNS void AS $$
 BEGIN
     DELETE FROM Oferecimento
-        WHERE ID = oferimento_id
+        WHERE ID = oferimento_id;
 
 END; $$
-LANGUAGE plpgsql
+LANGUAGE plpgsql;
 
 ------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION delete_cursa(
     aluno_NUSP varchar(9),
-    oferecimento_id SERIAL
+    oferecimento_id INTEGER
 )
 RETURNS void AS $$
 BEGIN
-    DELETE FROM Planeja
+    DELETE FROM Cursa
         WHERE al_NUSP = aluno_NUSP
-            AND of_id = oferecimento_id
+            AND of_id = oferecimento_id;
 
 END; $$
 LANGUAGE plpgsql;
@@ -64,7 +64,7 @@ RETURNS void AS $$
 BEGIN
     DELETE FROM rel_dis_mod
         WHERE di_codigo = disciplina_codigo
-            AND mo_codigo = modulo_codigo
+            AND mo_codigo = modulo_codigo;
 
 END; $$
 LANGUAGE plpgsql;
@@ -77,7 +77,7 @@ CREATE OR REPLACE FUNCTION delete_disciplina(
 RETURNS void AS $$
 BEGIN
     DELETE FROM Disciplina
-        WHERE codigo = dis_codigo
+        WHERE codigo = dis_codigo;
 
 END; $$
 LANGUAGE plpgsql;
@@ -90,7 +90,7 @@ CREATE OR REPLACE FUNCTION delete_curriculo(
 RETURNS void AS $$
 BEGIN
     DELETE FROM Curriculo
-        WHERE codigo = cur_codigo
+        WHERE codigo = cur_codigo;
 
 END; $$
 LANGUAGE plpgsql;
@@ -103,7 +103,7 @@ CREATE OR REPLACE FUNCTION delete_trilha(
 RETURNS void AS $$
 BEGIN
     DELETE FROM Curriculo
-        WHERE codigo = trilha_codigo
+        WHERE codigo = trilha_codigo;
 
 END; $$
 LANGUAGE plpgsql;
@@ -116,7 +116,7 @@ CREATE OR REPLACE FUNCTION delete_modulo(
 RETURNS void AS $$
 BEGIN
     DELETE FROM Curriculo
-        WHERE codigo = mod_codigo
+        WHERE codigo = mod_codigo;
 
 END; $$
 LANGUAGE plpgsql;
