@@ -270,7 +270,7 @@ VALUES
     ('atualiza_modulo','Atualizacao de um modulo'),
     ('atualiza_obrigatoria','Atualizacao da obrigatoriedade de uma disciplina'),
     ('atualiza_senha','Atualizacao da senha de um usuario'),
-    ('deleta_relacao_ministra', 'Remove um ministramento de professor'),
+    ('deleta_relacao_ministra', 'Remove uma ministracao  de professor'),
     ('deleta_relacao_planeja', 'Remove um planejamento de aluno'),
     ('deleta_oferecimento', 'Remove um oferecimento de professor'),
     ('deleta_relacao_cursa', 'Remove a matricula de um aluno num oferecimento'),
