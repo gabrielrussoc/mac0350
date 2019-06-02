@@ -1,45 +1,3 @@
-CREATE OR REPLACE FUNCTION update_pessoa(
-  pe_CPF varchar(11),
-  pe_nome varchar(255),
-  pe_sexo varchar(1),
-  pe_data_nascimento date
-)
-RETURNS void AS $$
-BEGIN
-  UPDATE Pessoa
-  SET nome = pe_nome,
-      sexo = pe_sexo,
-      data_nascimento = pe_data_nascimento
-  WHERE CPF = pe_CPF;
-END; $$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION update_professor(
-  pr_NUSP varchar(9),
-  pr_instituto varchar(128),
-  pr_departamento varchar(128)
-)
-RETURNS void AS $$
-BEGIN
-  UPDATE Professor
-  SET instituto = pr_instituto,
-      departamento = pr_departamento
-  WHERE NUSP = pr_NUSP;
-END; $$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION update_administrador(
-  adm_NUSP varchar(9),
-  adm_cargo varchar(64)
-)
-RETURNS void AS $$
-BEGIN
-  UPDATE Administrador
-  SET cargo = adm_cargo
-  WHERE NUSP = adm_NUSP;
-END; $$
-LANGUAGE plpgsql;
-
 CREATE OR REPLACE FUNCTION update_curriculo(
   cu_codigo varchar(64),
   cu_ad_NUSP varchar(9),
@@ -55,18 +13,6 @@ BEGIN
       instituto = cu_instituto,
       descricao = cu_descricao
   WHERE codigo = cu_codigo;
-END; $$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION update_aluno(
-  aNUSP varchar(9),
-  acu_codigo varchar(64)
-)
-RETURNS void AS $$
-BEGIN
-  UPDATE Aluno
-  SET cu_codigo = acu_codigo
-  WHERE nusp = aNUSP;
 END; $$
 LANGUAGE plpgsql;
 
@@ -147,5 +93,18 @@ BEGIN
   UPDATE rel_dis_mod
   SET obrigatoria = update_obrigatoria.obrigatoria
   WHERE (di_codigo = update_obrigatoria.di_codigo AND mo_codigo = update_obrigatoria.mo_codigo);
+END; $$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION update_password(
+  us_id       integer,
+  us_password TEXT
+)
+RETURNS void AS $$
+#variable_conflict use_column
+BEGIN
+  UPDATE users
+  SET us_password = crypt(update_password.us_password, gen_salt('bf'))
+  WHERE us_id = update_password.us_id;
 END; $$
 LANGUAGE plpgsql;

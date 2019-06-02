@@ -263,7 +263,14 @@ VALUES
     ('creditos_planejados', ''),
     ('lista_disciplinas_ministradas', ''),
     ('lista_disciplinas_oferecidas', ''),
-    ('lista_alunos_do_oferecimento', '');
+    ('lista_alunos_do_oferecimento', ''),
+    ('atualiza_curriculo',''),
+    ('atualiza_disciplina',''),
+    ('atualiza_nota',''),
+    ('atualiza_trilha',''),
+    ('atualiza_modulo',''),
+    ('atualiza_obrigatoria',''),
+    ('atualiza_senha','');
 
 INSERT INTO us_pf
     (us_id, pf_id)
@@ -283,11 +290,17 @@ INSERT INTO pf_se
     (pf_id, se_id)
 VALUES
     ((SELECT id FROM Perfil WHERE nome = 'visitante'), (SELECT id FROM Servico WHERE nome = 'insere_aluno')),
+    ((SELECT id FROM Perfil WHERE nome = 'visitante'), (SELECT id FROM Servico WHERE nome = 'atualiza_senha')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_curriculo')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_disciplina')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_trilha')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_modulo')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_ministra')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_curriculo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_disciplina')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_trilha')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_modulo')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_obrigatoria')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_planeja')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'insere_oferecimento')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_cursa')),
@@ -298,4 +311,5 @@ VALUES
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'creditos_planejados')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_ministradas')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_disciplinas_oferecidas')),
-    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento'));
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'lista_alunos_do_oferecimento')),
+    ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'atualiza_nota'));
