@@ -247,7 +247,6 @@ VALUES
 INSERT INTO Servico
     (nome, descricao)
 VALUES
-    ('insere_aluno', 'Cadastro de aluno na base de dados'),
     ('insere_curriculo', 'Cadastro de curriculo na base de dados'),
     ('insere_disciplina', 'Cadastro de disciplina na base de dados'),
     ('insere_trilha', 'Cadastro de trilha na base de dados'),
@@ -298,7 +297,6 @@ VALUES
 INSERT INTO pf_se
     (pf_id, se_id)
 VALUES
-    ((SELECT id FROM Perfil WHERE nome = 'visitante'), (SELECT id FROM Servico WHERE nome = 'insere_aluno')),
     ((SELECT id FROM Perfil WHERE nome = 'visitante'), (SELECT id FROM Servico WHERE nome = 'atualiza_senha')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_curriculo')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'insere_disciplina')),
