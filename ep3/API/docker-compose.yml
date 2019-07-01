@@ -11,3 +11,7 @@ services:
   postgres:
     image: "postgres:11.4"
     restart: always
+    volumes:
+    - ../acesso.sql:/docker-entrypoint-initdb.d/1-acesso.sql
+    - ../pessoa.sql:/docker-entrypoint-initdb.d/2-pessoa.sql
+    - ../acesso-pessoa.sql:/docker-entrypoint-initdb.d/3-acesso-pessoa.sql
