@@ -13,7 +13,7 @@ class Postgres:
             self.cursor.close()
             self.pool.putconn(self.conn)
 
-    def __init__(self, database, user, host, minConn=2, maxConn=5, port='5432'):
+    def __init__(self, database, user='postgres', host='postgres', minConn=2, maxConn=5, port='5432'):
         self.__pool = psycopg2.pool.ThreadedConnectionPool(minConn, maxConn,
                                         user = user,
                                         host = host,

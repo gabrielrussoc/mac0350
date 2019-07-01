@@ -1,6 +1,6 @@
 from db.Postgres import Postgres
 
-db = Postgres(database='postgres', user='postgres', host='postgres')
+db = Postgres(database='postgres')
 
 def calldb():
     with db.cursor() as cursor:
