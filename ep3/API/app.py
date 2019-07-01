@@ -1,13 +1,13 @@
 from flask import Flask
-import acesso.api
-import pessoas.api
-import curriculo.api
+import access.api
+import people.api
+import curriculum.api
 
 app = Flask(__name__)
 
-app.register_blueprint(acesso.api.blueprint, url_prefix='/acesso')
-app.register_blueprint(pessoas.api.blueprint, url_prefix='/pessoas')
-app.register_blueprint(curriculo.api.blueprint, url_prefix='/curriculo')
+app.register_blueprint(access.api.blueprint, url_prefix='/access')
+app.register_blueprint(people.api.blueprint, url_prefix='/people')
+app.register_blueprint(curriculum.api.blueprint, url_prefix='/curriculum')
 
 @app.route('/')
 def index():

@@ -12,6 +12,8 @@ services:
     image: "postgres:11.4"
     restart: always
     volumes:
-    - ../acesso.sql:/docker-entrypoint-initdb.d/1-acesso.sql
-    - ../pessoa.sql:/docker-entrypoint-initdb.d/2-pessoa.sql
-    - ../acesso-pessoa.sql:/docker-entrypoint-initdb.d/3-acesso-pessoa.sql
+    - ../MODULE_ACCESS.sql:/docker-entrypoint-initdb.d/1.sql
+    - ../MODULE_CURRICULUM.sql:/docker-entrypoint-initdb.d/2.sql
+    - ../MODULE_PEOPLE.sql:/docker-entrypoint-initdb.d/3.sql
+    - ../INTER_MOD_ACC_PEO.sql:/docker-entrypoint-initdb.d/4.sql
+    - ../INTER_MOD_PEO_CUR.sql:/docker-entrypoint-initdb.d/5.sql
