@@ -11,6 +11,7 @@ class Postgres:
             return self.cursor
         def __exit__(self, type, value, traceback):
             self.cursor.close()
+            self.conn.commit()
             self.pool.putconn(self.conn)
 
     def __init__(self, database, user='postgres', host='postgres', minConn=2, maxConn=5, port='5432'):
