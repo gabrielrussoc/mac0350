@@ -1,0 +1,12 @@
+DELETE FROM users;
+ALTER SEQUENCE users_us_id_seq RESTART;
+
+DELETE FROM Perfil;
+ALTER SEQUENCE Perfil_id_seq RESTART;
+
+DELETE FROM Servico;
+ALTER SEQUENCE Servico_id_seq RESTART;
+
+DELETE FROM us_pf;
+
+DELETE FROM pf_se;
