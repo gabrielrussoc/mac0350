@@ -91,6 +91,25 @@ END; $$
 LANGUAGE plpgsql;
 
 /*
+Devolve o ID do usuário
+  @param user_email: email do usuário
+
+  @return integer: ID do usuário
+*/
+CREATE OR REPLACE FUNCTION id(user_email email)
+RETURNS INTEGER AS $$
+DECLARE
+id INTEGER;
+BEGIN
+  SELECT us_id INTO id
+  FROM users
+  WHERE us_email = $1;
+
+  RETURN id;
+END; $$  
+LANGUAGE plpgsql;
+
+/*
 Checa se o usuário pode executar um serviço
   @param us_id: id do usuário
   @param se_nome: nome do serviço

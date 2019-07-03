@@ -8,6 +8,7 @@ services:
       - .:/code
     environment:
       FLASK_ENV: development
+      JWT_SECRET_KEY: "OvVuMkhLaOUgv35ww8A6gUoXrJdxvEY0lLmo+4lJrYgJfD4HzTrtp9yms24h+CubqRzmF1BCPspiICn7+xOoX+D75jEC9Iq/UO110HmezP8yWDPJjzM1dD/zu+Q+X5iIX6FY7VVonI9wuHyVCl+/+1p8orIAO/YKwdtv6xWFE+g1k0C3cIIYNVjb6h3jy6Vc6/1l7q5bQL9wfP48NYPRevt/wRLJqB96rUmST27CwAuAQPXiSJrhu7T3Vs+kHbMrYtfSU5ewQo9NS9B/ucwGKZCSsaH5zxFkpDNRtJTwqtd11URgSup591GO7+uK1Lu2FXsYfpvNhq5Luc8n90Y7Xw=="
   postgres:
     image: "postgres:11.4"
     restart: always
