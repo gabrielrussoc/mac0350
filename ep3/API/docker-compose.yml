@@ -17,3 +17,5 @@ services:
     - ../MODULE_PEOPLE.sql:/docker-entrypoint-initdb.d/3.sql
     - ../INTER_MOD_ACC_PEO.sql:/docker-entrypoint-initdb.d/4.sql
     - ../INTER_MOD_PEO_CUR.sql:/docker-entrypoint-initdb.d/5.sql
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=postgres,curriculum
