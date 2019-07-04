@@ -13,8 +13,14 @@ DROP DOMAIN IF EXISTS email CASCADE;
 CREATE DOMAIN email AS citext
   CHECK ( value ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$' );
 
+
+CREATE SEQUENCE users_us_id_seq;
+
+-- TO USE ON A REMOTE SERVER
+CREATE VIEW users_us_id_seq_view AS SELECT nextval('users_us_id_seq') AS a;
+
 CREATE TABLE users (
-  us_id       SERIAL,
+  us_id       INTEGER NOT NULL DEFAULT nextval('users_us_id_seq'),
   us_email    email,
   us_password TEXT NOT NULL,
   CONSTRAINT pk_user PRIMARY KEY (us_id),
@@ -165,7 +171,28 @@ VALUES
     ('finger@usp.br', crypt('admin', gen_salt('bf'))),
     ('germanohn@gmail.com', crypt('marcel', gen_salt('bf'))),
     ('marcel@usp.br', crypt('geometria', gen_salt('bf'))),
-    ('cris@usp.br', crypt('geocomp', gen_salt('bf')));
+    ('cris@usp.br', crypt('geocomp', gen_salt('bf'))),
+    ('a@gmail.com', crypt('capivara', gen_salt('bf'))),
+    ('b@gmail.com', crypt('google', gen_salt('bf'))),
+    ('c@gmail.com', crypt('grafinhos', gen_salt('bf'))),
+    ('d@gmail.com', crypt('senha', gen_salt('bf'))),
+    ('e@usp.br', crypt('maratona', gen_salt('bf'))),
+    ('f@usp.br', crypt('db', gen_salt('bf'))),
+    ('g@usp.br', crypt('admin', gen_salt('bf'))),
+    ('h@gmail.com', crypt('marcel', gen_salt('bf'))),
+    ('i@usp.br', crypt('geometria', gen_salt('bf'))),
+    ('j@usp.br', crypt('geocomp', gen_salt('bf'))),
+    ('k@gmail.com', crypt('capivara', gen_salt('bf'))),
+    ('l@gmail.com', crypt('google', gen_salt('bf'))),
+    ('m@gmail.com', crypt('grafinhos', gen_salt('bf'))),
+    ('n@gmail.com', crypt('senha', gen_salt('bf'))),
+    ('o@usp.br', crypt('maratona', gen_salt('bf'))),
+    ('p@usp.br', crypt('db', gen_salt('bf'))),
+    ('q@usp.br', crypt('admin', gen_salt('bf'))),
+    ('r@gmail.com', crypt('marcel', gen_salt('bf'))),
+    ('s@usp.br', crypt('geometria', gen_salt('bf'))),
+    ('t@usp.br', crypt('geocomp', gen_salt('bf'))),
+    ('u@usp.br', crypt('geocomp', gen_salt('bf')));
 
 
 INSERT INTO Perfil
