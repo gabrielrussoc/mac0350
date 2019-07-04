@@ -8,7 +8,7 @@ INSTRUÇÕES DE USO
 ------------------------------------
 
 Para facilitar a execução da aplicação em múltiplos ambientes, decidimos usar
-Docker (https://www.docker.com/). Basta baixar a Engine do Docker, disponível
+Docker (https://www.docker.com/). Basta instalar a Engine do Docker, disponível
 em https://hub.docker.com/search/?type=edition&offering=community para os mais
 variados sistemas operacionais e dentro do diretório API, rodar 
 
