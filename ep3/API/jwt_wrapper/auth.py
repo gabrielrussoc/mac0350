@@ -11,6 +11,7 @@ def service(service):
             if authorize(user_id, service):
                 return func(*args, **kwargs)
             return jsonify({ 'msg': 'Forbidden' }), HTTPStatus.FORBIDDEN
+        func_wrapper.__name__ = func.__name__
         return func_wrapper
     return service_decorator
 
