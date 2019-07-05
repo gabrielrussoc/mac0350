@@ -19,3 +19,8 @@ def cadastro(email, password, cpf, nome, sexo, data_nascimento):
     with db.cursor() as cursor:
         cursor.callproc('cadastro', [email, password, cpf, nome, sexo, data_nascimento])
         return cursor.fetchone()[0]
+
+def get_user(id):
+    with db.cursor() as cursor:
+        cursor.callproc('lista_usuario', [int(id)])
+        return cursor.fetchone()

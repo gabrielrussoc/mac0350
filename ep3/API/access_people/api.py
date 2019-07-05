@@ -27,3 +27,8 @@ def signup():
     data_nascimento = params['data_nascimento']
     user_id = db.cadastro(email, password, cpf, nome, sexo, data_nascimento)
     return jsonify({ 'msg': 'User created', 'jwt': create_token(user_id) }), HTTPStatus.CREATED
+
+@blueprint.route('/person/<id>', methods=['GET'])
+def get_user(id):
+    x = db.get_user(id)
+    return jsonify(x), HTTPStatus.OK

@@ -41,6 +41,29 @@ CREATE FOREIGN TABLE Pessoa (
 SERVER people_server
 OPTIONS (table_name 'pessoa');
 
+CREATE FOREIGN TABLE Professor (
+  pe_CPF varchar(11) not NULL,
+  NUSP varchar(9) not NULL,
+  instituto varchar(128) not NULL
+)
+SERVER people_server
+OPTIONS (table_name 'professor');
+
+CREATE FOREIGN TABLE Administrador (
+  pe_CPF varchar(11) not NULL,
+  NUSP varchar(9) not NULL,
+  cargo varchar(64)
+)
+SERVER people_server
+OPTIONS (table_name 'administrador');
+
+CREATE FOREIGN TABLE Aluno (
+  pe_CPF varchar(11) not NULL,
+  NUSP varchar(9) not NULL,
+  cu_codigo varchar(64) not NULL
+)
+SERVER people_server
+OPTIONS (table_name 'aluno');
 
 CREATE FOREIGN TABLE users_us_id_foreign_seq (
     a INTEGER
@@ -110,6 +133,25 @@ BEGIN
   VALUES (new_id, (SELECT id FROM Perfil WHERE nome='visitante'));
 
   RETURN new_id;
+END; $$  
+LANGUAGE plpgsql;
+
+CREATE TYPE Pessoa_completa AS (CPF varchar(11), nome varchar(255), al_NUSP varchar(9), pr_NUSP varchar(9), ad_NUSP varchar(9));
+
+CREATE OR REPLACE FUNCTION lista_usuario(
+  id INTEGER
+)
+RETURNS Pessoa_completa AS $$
+DECLARE ans Pessoa_completa;
+BEGIN
+  SELECT Pessoa.CPF, Pessoa.nome, Aluno.NUSP, Professor.NUSP, Administrador.NUSP INTO ans
+  FROM Pessoa
+  LEFT OUTER JOIN Aluno on Aluno.pe_CPF = Pessoa.CPF
+  LEFT OUTER JOIN Professor on Professor.pe_CPF = Pessoa.CPF
+  LEFT OUTER JOIN Administrador on Administrador.pe_CPF = Pessoa.CPF
+  WHERE Pessoa.us_id = id;
+
+  RETURN ans;
 END; $$  
 LANGUAGE plpgsql;
 
