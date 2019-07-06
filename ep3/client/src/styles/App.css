@@ -1,0 +1,23 @@
+@import "tachyons";
+@import url("https://fonts.googleapis.com/css?family=Francois+One|Maven+Pro|Montserrat");
+
+nav {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.section-title {
+  font-family: "Maven Pro", sans-serif;
+  /* font-family: 'Francois One', sans-serif; */
+}
