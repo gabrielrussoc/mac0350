@@ -2,9 +2,16 @@ from flask import Blueprint, request, jsonify
 from http import HTTPStatus
 from . import db
 from access import services
-from jwt_wrapper.auth import service, create_token, get_user_id
+from access_people import db as access_db
+from jwt_wrapper.auth import service, get_user_id
 
 blueprint = Blueprint('curriculum', __name__)
+
+@blueprint.route('/', methods=['GET'])
+@service(services.LISTA_CURRICULOS)
+def lista_curriculos():
+    x = access_db.get_user(get_user_id())
+    return jsonify({ 'curriculums': db.lista_curriculos(x[4]) })
 
 @blueprint.route('/<cu_codigo>', methods=['GET'])
 def lista_trilhas(cu_codigo):

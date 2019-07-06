@@ -237,7 +237,8 @@ VALUES
     ('deleta_disciplina', 'Remove uma disciplina'),
     ('deleta_curriculo', 'Remove um curriculo'),
     ('deleta_trilha', 'Remove uma trilha'),
-    ('deleta_modulo', 'Remove um modulo');
+    ('deleta_modulo', 'Remove um modulo'),
+    ('lista_curriculos', 'Lista os curriculos');
 
 INSERT INTO us_pf
     (us_id, pf_id)
@@ -246,6 +247,7 @@ VALUES
     ((SELECT us_id FROM users WHERE us_email = 'lg@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
     ((SELECT us_id FROM users WHERE us_email = 'vh@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'aluno')),
     ((SELECT us_id FROM users WHERE us_email = 'damara@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'administrador')),
+    ((SELECT us_id FROM users WHERE us_email = 'a@gmail.com'), (SELECT id FROM Perfil WHERE nome = 'administrador')),
     ((SELECT us_id FROM users WHERE us_email = 'carlinhos@usp.br'), (SELECT id FROM Perfil WHERE nome = 'visitante')),
     ((SELECT us_id FROM users WHERE us_email = 'jef@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor')),
     ((SELECT us_id FROM users WHERE us_email = 'finger@usp.br'), (SELECT id FROM Perfil WHERE nome = 'professor')),
@@ -267,6 +269,7 @@ VALUES
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_trilha')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_modulo')),
     ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'atualiza_obrigatoria')),
+    ((SELECT id FROM Perfil WHERE nome = 'administrador'), (SELECT id FROM Servico WHERE nome = 'lista_curriculos')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_planeja')),
     ((SELECT id FROM Perfil WHERE nome = 'professor'), (SELECT id FROM Servico WHERE nome = 'insere_oferecimento')),
     ((SELECT id FROM Perfil WHERE nome = 'aluno'), (SELECT id FROM Servico WHERE nome = 'insere_cursa')),
