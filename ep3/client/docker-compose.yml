@@ -1,0 +1,15 @@
+version: '3.4'
+
+services: 
+  client:
+    build:
+      context: .
+      target: 'development'
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/usr/src'
+      - 'node_modules:/usr/src/node_modules'
+
+volumes:
+  node_modules:
