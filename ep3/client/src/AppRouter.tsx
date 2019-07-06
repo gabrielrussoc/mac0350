@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Curriculums from './Curriculums'
 import Login from './Login'
 
-const App = () => (
+const AppRouter = () => (
   <Router>
     <Fragment>
       <Route exact path="/" component={Curriculums} />
@@ -18,4 +18,4 @@ const App = () => (
   </Router>
 );
 
-export default App;
+export default AppRouter;
