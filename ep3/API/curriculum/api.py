@@ -11,7 +11,7 @@ blueprint = Blueprint('curriculum', __name__)
 @service(services.LISTA_CURRICULOS)
 def lista_curriculos():
     x = access_db.get_user(get_user_id())
-    return jsonify({ 'curriculums': db.lista_curriculos(x[4]) })
+    return jsonify({ 'curriculums': db.lista_curriculos(x["ad_nusp"]) })
 
 @blueprint.route('/<cu_codigo>', methods=['GET'])
 def lista_trilhas(cu_codigo):

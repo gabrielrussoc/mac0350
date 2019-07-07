@@ -23,4 +23,5 @@ def cadastro(email, password, cpf, nome, sexo, data_nascimento):
 def get_user(id):
     with db.cursor() as cursor:
         cursor.callproc('lista_usuario', [int(id)])
-        return cursor.fetchone()
+        columns = [c.name for c in cursor.description]
+        return dict(zip(columns, cursor.fetchone()))
