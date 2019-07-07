@@ -3,54 +3,37 @@ import axios from 'axios'
 
 import CardGrid from './components/CardGrid'
 
-const cur = [
-  { link: '/curriculo/45', text: 'BCC - 45' },
-  { link: '/curriculo/46', text: 'BCC - 46' },
-  { link: '/curriculo/47', text: 'BCC - 47' },
-  { link: '/curriculo/48', text: 'BCC - 48' },
-  { link: '/curriculo/49', text: 'BCC - 49' },
-  { link: '/curriculo/40', text: 'BCC - 40' },
-  { link: '/curriculo/41', text: 'BCC - 41' },
-  { link: '/curriculo/42', text: 'BCC - 42' },
-  { link: '/curriculo/43', text: 'BCC - 43' },
-  { link: '/curriculo/44', text: 'BCC - 44' },
-]
+const Disciplines: FunctionComponent = () => {
 
-const Curriculums: FunctionComponent = () => {
-
-  const [disciplines, setDisciplines] = useState(null)
+  const [disciplines, setDisciplines] = useState([])
 
   useEffect(() => {
-    const paths = window.location.pathname.split('/')
     axios(
-      `http://localhost:5000/curriculum/45/disciplinas`, {
-        headers: { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjI0NTMzMzksIm5iZiI6MTU2MjQ1MzMzOSwianRpIjoiMTQzNmEyZjMtNzQxYS00NDdhLWE2MTItNTkyNDUyMGViZjliIiwiZXhwIjoxNTYyNDU0MjM5LCJpZGVudGl0eSI6MywiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.p36FrkNWhqo3s5WAv6xDzJshaQO3kliHtdFhslwNCTg' },
+      `http://localhost:5000/curriculum/modulo/${window.location.pathname.split('/')[1]}`, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
       }
     ).then((res) => {
-      console.log(res.data)
-      return (
-        setDisciplines(res.data)
-      )
+      setDisciplines(res.data.curriculums.map((cur: any) => ({ link: `/curriculo/${cur[0]}`, text: `${cur[0]} - ${cur[1]}` })))
     }).catch((err) => console.log(err))
-  });
+  }, []);
 
   return (
-    <div className="bg-near-white pa5 w-100">
+    <div className="bg-near-white pa5 w-100 min-vh-100">
       <div className="w-90 center">
         <div className="flex-ns items-baseline w-90 w-80-ns flex justify-between center mb8">
           <h1 className="c-base t-heading-1 pr7">Disciplinas</h1>
         </div>
         <div className="bg-white center">
-          <div>
-            <button>Adicionar Disciplina</button>
-            <button>Remover Disciplina</button>
+          <div className="self-end flex pa4">
+            <button className="mh4 ph3 br-pill">
+              <p>Adicionar currículo</p>
+            </button>
           </div>
-          {/* <CardGrid content={disciplines} /> */}
-          <CardGrid content={cur} />
+          <CardGrid content={disciplines} />
         </div>
       </div>
     </div>
   )
 }
 
-export default Curriculums
+export default Disciplines
