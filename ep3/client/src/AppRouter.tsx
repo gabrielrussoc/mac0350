@@ -16,10 +16,9 @@ const AppRouter = () => (
       <Route path="/login" component={Login} />
       <Route path="/cadastro" component={SignUp} />
       <Route path="/curriculos" component={Curriculums} />
-      <Route path="/curriculo/:curriculumId/disciplinas" component={Disciplines} />
       <Route path="/curriculo/:curriculumId/trilhas" component={Tracks} />
-      <Route path="/curriculo/:curriculumId/modulos" component={Modules} />
-      <Route path="/modulo/:moduleId/disciplinas" component={Login} />
+      <Route path="/trilha/:TrackId" component={Modules} />
+      <Route path="/modulo/:moduleId" component={Disciplines} />
     </Fragment>
   </Router>
 );
