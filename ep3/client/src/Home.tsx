@@ -14,7 +14,7 @@ const Home: FunctionComponent = () => (
           </Link>
         </div>
         <div className="w-50">
-          <Link to="/login">
+          <Link to="/cadastro">
             <button className="bg-blue br3 ph3 white-90 pointer">
               <p>Cadastro</p>
             </button>
