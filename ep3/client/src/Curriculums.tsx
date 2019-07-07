@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
+import axios from 'axios'
 
 import CardGrid from './components/CardGrid'
 
@@ -15,35 +16,39 @@ const cur = [
   { link: '/curriculo/44', text: 'BCC - 44' },
 ]
 
-const Curriculums: FunctionComponent = () => (
-  <div className="bg-near-white pa5 w-100">
-    <div className="w-90 center">
-      <div className="flex-ns items-baseline w-90 w-80-ns center mb8">
-        <h1 className="c-base t-heading-1 pr7">Currículos</h1>
-        <nav>
-          <ul className="flex-ns list t-heading-5 pl0">
-            <li className="pr6 pb4 pb0-ns">
-              <a
-                className="no-underline dim"
-              >
-                Módulos
-                </a>
-            </li>
-            <li>
-              <a
-                className="no-underline dim"
-              >
-                Disciplinas
-                </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className="bg-white center">
-        <CardGrid content={cur} />
+const Curriculums: FunctionComponent = () => {
+
+  const [disciplines, setDisciplines] = useState(null)
+
+  useEffect(() => {
+    axios(
+      `http://localhost:5000/curriculum/`, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
+      }
+    ).then((res) => {
+      console.log(res.data)
+      return (
+        setDisciplines(res.data)
+      )
+    }).catch((err) => console.log(err))
+  });
+
+  return (
+    <div className="bg-near-white pa5 w-100">
+      <div className="w-90 center">
+        <div className="flex-ns items-baseline w-90 w-80-ns flex justify-between center mb8">
+          <h1 className="c-base t-heading-1 pr7">Currículos</h1>
+        </div>
+        <div className="bg-white center">
+          <div>
+            <button>Adicionar currículo</button>
+            <button>Remover currículo</button>
+          </div>
+          <CardGrid content={cur} />
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Curriculums
