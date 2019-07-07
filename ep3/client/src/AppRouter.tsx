@@ -8,6 +8,7 @@ import SignUp from './SignUp'
 import Disciplines from './Disciplines'
 import Tracks from './Tracks'
 import Modules from './Modules'
+import Dashboard from './StudentDashboard';
 
 const AppRouter = () => (
   <Router>
@@ -15,6 +16,7 @@ const AppRouter = () => (
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/cadastro" component={SignUp} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/curriculos" component={Curriculums} />
       <Route path="/curriculo/:curriculumId/trilhas" component={Tracks} />
       <Route path="/trilha/:TrackId" component={Modules} />
