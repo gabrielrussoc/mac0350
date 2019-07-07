@@ -16,7 +16,14 @@ const Modules: FunctionComponent = () => {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
       }
     ).then((res) => {
-      setModules(res.data.modulos.map((cur: any) => ({ link: `/modulo/${cur[0]}`, text: cur[1], optionText: 'Disciplinas', optionLink: '' })))
+      setModules(res.data.modulos.map((cur: any) => ({
+        link: `/modulo/${cur[0]}`,
+        text: cur[1],
+        optionText: 'Disciplinas',
+        optionLink: '',
+        deleteUrl: 'curriculum/modulo',
+        deleteParam: cur[0]
+      })))
     }).catch((err) => console.log(err))
   }, []);
 
@@ -40,7 +47,7 @@ const Modules: FunctionComponent = () => {
         </div>
         <div className="bg-white center flex flex-column">
           <div className="self-end flex pa4">
-            <button className="mh4 ph3 br-pill">
+            <button className="mh4 ph3 br-pill" onClick={() => setOpenModal(true)}>
               <p>Adicionar módulo</p>
             </button>
           </div>

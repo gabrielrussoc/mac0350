@@ -16,7 +16,12 @@ const Disciplines: FunctionComponent = () => {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
       }
     ).then((res) => {
-      setDisciplines(res.data.disciplinas.map((cur: any) => ({ link: '', text: `${cur[0]} - ${cur[1]}` })))
+      setDisciplines(res.data.disciplinas.map((cur: any) => ({
+        link: '',
+        text: `${cur[0]} - ${cur[1]}`,
+        deleteUrl: 'curriculum/disciplina',
+        deleteParam: cur[0]
+      })))
     }).catch((err) => console.log(err))
   }, []);
 
@@ -41,7 +46,7 @@ const Disciplines: FunctionComponent = () => {
         </div>
         <div className="bg-white center flex flex-column">
           <div className="self-end flex pa4">
-            <button className="mh4 ph3 br-pill">
+            <button className="mh4 ph3 br-pill" onClick={() => setOpenModal(true)}>
               <p>Adicionar disciplina</p>
             </button>
           </div>

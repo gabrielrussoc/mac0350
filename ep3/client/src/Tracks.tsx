@@ -18,9 +18,16 @@ const Tracks: FunctionComponent = () => {
       }
     ).then((res) => {
       console.log(res.data)
-      return setTracks(res.data.trilhas.map((tri: any) => ({ link: `/trilha/${tri[0]}`, text: `${tri[1]}`, optionText: 'Módulos', optionLink: '' })))
+      return setTracks(res.data.trilhas.map((tri: any) => ({
+        link: `/trilha/${tri[0]}`,
+        text: `${tri[1]}`,
+        optionText: 'Módulos',
+        optionLink: '',
+        deleteUrl: 'curriculum/trilha',
+        deleteParam: tri[0]
+      })))
     }).catch((err) => console.log(err))
-  });
+  }, []);
 
   const { values, handleChange, handleSubmit } = useForm(create)
 
@@ -42,7 +49,7 @@ const Tracks: FunctionComponent = () => {
         </div>
         <div className="bg-white center flex flex-column">
           <div className="self-end flex pa4">
-            <button className="mh4 ph3 br-pill">
+            <button className="mh4 ph3 br-pill" onClick={() => setOpenModal(true)}>
               <p>Adicionar trilha</p>
             </button>
           </div>

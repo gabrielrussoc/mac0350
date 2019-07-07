@@ -16,7 +16,13 @@ const Curriculums: FunctionComponent = () => {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
       }
     ).then((res) => {
-      setDisciplines(res.data.curriculums.map((cur: any) => ({ link: `/curriculo/${cur[0]}`, text: cur[2], optionText: 'Trilhas', optionLink: 'trilhas' })))
+      setDisciplines(res.data.curriculums.map((cur: any) => ({
+        link: `/curriculo/${cur[0]}`,
+        text: cur[2], optionText: 'Trilhas',
+        optionLink: 'trilhas',
+        deleteUrl: 'curriculum',
+        deleteParam: cur[0]
+      })))
     }).catch((err) => console.log(err))
   }, []);
 

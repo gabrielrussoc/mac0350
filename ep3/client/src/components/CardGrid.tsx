@@ -1,5 +1,6 @@
 import React, { FunctionComponent, Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 interface Props {
   content: {
@@ -7,7 +8,13 @@ interface Props {
     text: string
     optionText: string
     optionLink: string
+    deleteUrl: string,
+    deleteParam: string
   }[]
+}
+
+const handleDelete = async (url: string, code: string) => {
+  await axios.delete(`http://localhost:5000/${url}`, { data: { "code": code }, headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` } })
 }
 
 const CardGrid: FunctionComponent<Props> = ({ content }) => (
@@ -19,6 +26,9 @@ const CardGrid: FunctionComponent<Props> = ({ content }) => (
           <Link to={`${item.link}/${item.optionLink}`}>
             <p>{item.optionText}</p>
           </Link>
+          <p className="link red pointer" onClick={async () => await handleDelete(item.deleteUrl, item.deleteParam)}>
+            Deletar
+          </p>
         </div>
       </Fragment>
     ))}
