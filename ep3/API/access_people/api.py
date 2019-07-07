@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from http import HTTPStatus
 from access import services
-from jwt_wrapper.auth import create_token
+from jwt_wrapper.auth import create_token, jwt_required, get_user_id
 from . import db
 
 blueprint = Blueprint('access_people', __name__)
@@ -28,7 +28,8 @@ def signup():
     user_id = db.cadastro(email, password, cpf, nome, sexo, data_nascimento)
     return jsonify({ 'msg': 'User created', 'jwt': create_token(user_id) }), HTTPStatus.CREATED
 
-@blueprint.route('/person/<id>', methods=['GET'])
-def get_user(id):
-    x = db.get_user(id)
+@blueprint.route('/person/', methods=['GET'])
+@jwt_required
+def get_user():
+    x = db.get_user(get_user_id())
     return jsonify(x), HTTPStatus.OK
