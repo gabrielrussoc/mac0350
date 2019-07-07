@@ -4,6 +4,7 @@ from flask_cors import CORS
 import access.api
 import curriculum.api
 import access_people.api
+import people_curriculum.api
 import os
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ jwt = JWTManager(app)
 app.register_blueprint(access.api.blueprint, url_prefix='/access')
 app.register_blueprint(curriculum.api.blueprint, url_prefix='/curriculum')
 app.register_blueprint(access_people.api.blueprint, url_prefix='/access_people')
+app.register_blueprint(people_curriculum.api.blueprint, url_prefix='/people_curriculum')
 
 CORS(app)
 
