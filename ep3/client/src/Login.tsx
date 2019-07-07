@@ -19,7 +19,7 @@ const Login: FunctionComponent = () => {
   }
 
   return userIn ? <Redirect to="/curriculos" /> : (
-    <div className="flex justify-center items-center bg-near-white vh-100">
+    <div className="flex justify-center items-center bg-near-white min-vh-100">
       <div className="bg-white br3 pv5 ph6">
         <h1 className="tc">Login</h1>
         <form className="mv5 flex flex-column" onSubmit={handleSubmit}>
