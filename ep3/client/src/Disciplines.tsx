@@ -9,11 +9,11 @@ const Disciplines: FunctionComponent = () => {
 
   useEffect(() => {
     axios(
-      `http://localhost:5000/curriculum/modulo/${window.location.pathname.split('/')[1]}`, {
+      `http://localhost:5000/curriculum/modulo/${window.location.pathname.split('/')[2]}`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('userToken')}` },
       }
     ).then((res) => {
-      setDisciplines(res.data.curriculums.map((cur: any) => ({ link: `/curriculo/${cur[0]}`, text: `${cur[0]} - ${cur[1]}` })))
+      setDisciplines(res.data.disciplinas.map((cur: any) => ({ link: '', text: `${cur[0]} - ${cur[1]}` })))
     }).catch((err) => console.log(err))
   }, []);
 
@@ -26,7 +26,7 @@ const Disciplines: FunctionComponent = () => {
         <div className="bg-white center">
           <div className="self-end flex pa4">
             <button className="mh4 ph3 br-pill">
-              <p>Adicionar currículo</p>
+              <p>Adicionar disciplina</p>
             </button>
           </div>
           <CardGrid content={disciplines} />
